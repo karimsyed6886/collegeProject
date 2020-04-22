@@ -1,0 +1,20 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div><a routerLink="/home" class="navbar-brand">
+           <b> Portal</b></a></div>
+
+        <ul class="navbar-nav">  
+        <ul class="navbar-nav">  
+            <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/home" class="nav-link">Home</a></li>
+            <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/userlist" class="nav-link">Users</a></li>
+            <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/register" class="nav-link">Registration</a></li>
+        </ul>
+    </ul>
+
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+                <li><a *ngIf="!basicAuthenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+                <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
+        </ul>
+        
+    </nav>
+</header>

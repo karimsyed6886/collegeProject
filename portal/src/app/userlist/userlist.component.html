@@ -1,0 +1,55 @@
+
+
+<h3>Userlist</h3>
+<div class="alert alert-success" >{{message}}</div>
+
+<div class="card text-center m-3">
+  <div class="search-hero">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  search for a user">
+  </div>
+    <div class="card-body">
+  <table class="table">
+    <thead>
+        <tr>
+          <th>User id</th>
+            <th>Username</th>
+            <th>email</th>
+            <th>Role</th>
+            <th>creationTime</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users  | filter:searchText">
+           <td>{{user.id}}</td>
+            <td>{{user.userName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.rollName}}</td>
+            <td>{{user.creationDateTime}}</td>
+            
+            <td><button  class="btn btn-success"   (click)="updateUser(user.id)" >Update</button></td>
+            <td><button class="btn btn-warning"  (click)="deleteUser(user.id)" >Delete</button></td>
+          </tr>
+        </tbody>
+        </table>
+    </div>
+    <div class="card-footer pb-0 pt-3">
+        <jw-pagination [items]="users" (changePage)="onChangePage($event)"></jw-pagination>
+    </div>
+</div>
+
+<div class="container">
+  
+      
+    
+    
+      <!--   for (Todo todo: todos) {  -->
+              
+      <!-- } -->
+    
+
+  
+
+  
+</div>

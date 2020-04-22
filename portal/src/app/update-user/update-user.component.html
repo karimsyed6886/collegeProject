@@ -1,0 +1,56 @@
+<style>
+  #warn {
+    color: red;
+  }
+  </style>
+  
+<H1>Edit user</H1>
+
+<div class="container"    style="float: right;"> 
+ <!-- <div class="alert alert-warning" *ngIf="todoForm.dirty && todoForm.invalid">Enter valid values</div> 
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && id.invalid">Enter valid id </div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && userName.invalid">Enter valid username</div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && email.invalid">Enter valid email</div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && Role.invalid">Enter valid Role</div>-->
+
+  <form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm="ngForm" style="width: 500px;"  >
+    <fieldset class="form-group">
+      <label> user id</label>
+      <input type="text" #id="ngModel"
+            [(ngModel)]="user.id" class="form-control" 
+                name="user.id" required="required" disabled/>
+      <label id="warn" *ngIf="todoForm.dirty && email.invalid">Enter valid id   </label>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>Username</label>
+        <input type="text" #userName="ngModel"
+        [(ngModel)]="user.userName" class="form-control" name="user.userName"
+       required="required" >
+       <label id="warn" *ngIf="todoForm.dirty && userName.invalid"> Enter valid email   </label>
+    </fieldset>
+    <fieldset class="form-group">
+      <label >email</label>
+      <input type="text" #email="ngModel" 
+            [(ngModel)]="user.email" class="form-control"
+                name="user.email" required="required" minlength="5" onkeydown="checkpass()">
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Role</label>
+      <input type="text" #Role="ngModel" 
+            [(ngModel)]="user.rollName" class="form-control" 
+                name="user.rollName" required="required" minlength="5" disabled   >
+    </fieldset>
+    <fieldset class="form-group">
+      <label>creation time</label>
+      <input type="text" #description="ngModel" 
+            [(ngModel)]="user.creationDateTime" class="form-control" 
+                name="user.creationDateTime" required="required" >
+    </fieldset>
+   
+    
+
+
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>  
+</div>

@@ -1,0 +1,23 @@
+<H2>Login!</H2>
+
+<div class="container">
+  <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+
+  <div>
+    User Name : <input type="text" name="username" [(ngModel)]="username" >
+    Password  : <input type="password" name="password" [(ngModel)]="password">
+
+    <!-- User Name : {{username}} -->
+
+    <!-- <button (click)=handleLogin() class="btn btn-success">Login</button> -->
+    <!-- <button (click)=handleBasicAuthLogin() class="btn btn-success">Login</button> -->
+    
+    <button (click)=handleJWTAuthLogin() class="btn btn-success">Login</button>
+    <tr>
+      <td> ** want to register , Please click </td> <td><a routerLink="/register" class="nav-link"  > here</a></td>
+
+    </tr>
+
+    
+  </div>
+</div>

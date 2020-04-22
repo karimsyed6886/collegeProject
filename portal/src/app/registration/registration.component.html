@@ -1,0 +1,81 @@
+<style>
+  #warn {
+    color: red;
+  }
+
+#warn_pop{
+  width: 500px;
+}  
+  </style>
+
+  
+<H1>Registraton</H1>
+
+<div class="container"    style="float: right;"> 
+ <div class="alert alert-warning" id="warn_pop" *ngIf= "todoForm.dirty && todoForm.invalid"> Enter valid values </div> 
+  <div class="alert alert-warning"  id="warn_pop" *ngIf= "this.validator_service.passwrd_validation[0]"> passwords not same </div> 
+  <div class="alert alert-warning"  id="warn_pop" *ngIf= "this.validator_service.passwrd_validation[1]"> passwords validation Failed . </div> 
+
+  <div class="alert alert-success"  id="warn_pop" *ngIf="this.validator_service.user_regsiter_validation[0]"> User created succesfully </div>
+  <form (ngSubmit)="!todoForm.invalid && saveRegisterUser(user)" #todoForm="ngForm" style="width: 500px;"  >
+  <!--  <fieldset class="form-group">
+      <input type="text" #id="ngModel" 
+            [(ngModel)]="user.id" class="form-control" 
+                name="user.id" required="required" />
+      
+    </fieldset>-->
+
+    <fieldset class="form-group">
+        <label>Username</label>
+        <input type="text" #userName="ngModel"  [disabled]="this.validator_service.user_regsiter_validation[0]"
+        [(ngModel)]="user.userName" class="form-control" name="user.userName"
+       required="required"  minlength="5" >
+      
+    </fieldset>
+    <label id="warn" *ngIf="userName.dirty && userName.invalid"> username length minimum 5 characters </label>
+    <fieldset class="form-group">
+      <label >email</label>
+      <input type="text" #email="ngModel" [disabled]="this.validator_service.user_regsiter_validation[0]"
+            [(ngModel)]="user.email" class="form-control"
+                name="user.email" required="required" minlength="5">
+    </fieldset>
+    <label id="warn" *ngIf="email.dirty && email.invalid"> enter email length minimum 5 characters  </label>
+    <fieldset class="form-group">
+      <label>Password</label>
+      <input type="password" #password="ngModel" [disabled]="this.validator_service.user_regsiter_validation[0]"
+            [(ngModel)]="user.password" class="form-control" 
+                name="user.password" required="required" minlength="8"   >
+                
+    </fieldset>
+    <label id="warn" *ngIf="password.dirty && password.invalid"> **password should contain at least one digit,capital & small char  </label>
+    <label id="warn" *ngIf="password.dirty && password.invalid"> **password length minmum 8 characters.  </label>
+   
+   <fieldset class="form-group">
+      <label>Confirm password</label>
+      <input type="password" #confirm_password="ngModel" [disabled]="this.validator_service.user_regsiter_validation[0]"
+            [(ngModel)]="user.confirm_password" class="form-control" 
+                name="user.confirm_password" required="required" minlength="8" >
+                <label id="warn" *ngIf="confirm_password.dirty && confirm_password.invalid">  ** password and confirm password should be same  </label>
+                <label id="warn" *ngIf="confirm_password.dirty && confirm_password.invalid"> **password length minimum 8 characters.  </label>
+    </fieldset>
+    <fieldset class="form-group">
+      <label> Role</label>
+      <input type="text" [disabled]=true value="student"
+             class="form-control" 
+           required="required" minlength="8" >
+                <label id="warn" *ngIf="confirm_password.dirty && confirm_password.invalid">  ** password and confirm password should be same  </label>
+                <label id="warn" *ngIf="confirm_password.dirty && confirm_password.invalid"> **password length minimum 8 characters.  </label>
+    </fieldset>
+
+
+  
+    <div>
+    <button type="submit" class="btn btn-success"  [disabled]="this.validator_service.user_regsiter_validation[0]"   >Save</button>
+    <tr>
+      <td> want to login , Please click </td> <td><a routerLink="/login" class="nav-link"  > here</a></td>
+
+    </tr>
+    
+  </div>
+  </form>  
+</div>
